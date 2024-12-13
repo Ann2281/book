@@ -1,0 +1,9 @@
+@import "bootstrap.min.css";
+
+.btngreen{
+    background: #05b487;
+    @extend .btn
+}
+.btngreen:hover{
+    background: #b40532;
+}

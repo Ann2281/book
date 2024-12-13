@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{/style/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style/style.css}">
+    <title>Авторы</title>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-light" style="background: #05b487">
+        <div class="container-fluid">
+            <div class="d-inline-flex">
+                <a class="navbar-brand btngreen" style="padding: 5px; border-radius: 25px" href="/">
+                    <img th:src="@{/images/logo.png}" style="margin: auto" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Главная</h4>
+                </a>
+                <a class="navbar-brand btngreen" style="padding: 5px; border-radius: 25px" href="/Author">
+                    <img th:src="@{/images/author.png}" style="margin: auto" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Авторы</h4>
+                </a>
+                <a class="btn btngreen" style="background: #b40532; padding: 5px; border-radius: 25px"  href="/Publish">
+                    <img th:src="@{/images/publish.png}" style="margin: auto;" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Издательства</h4>
+                </a>
+                <a class="btn btngreen" style="padding: 5px; margin-left: 10px; border-radius: 25px"  href="/Book">
+                    <img th:src="@{/images/book.png}" style="margin: auto; " alt="" width="80" height="80"/>
+                    <h4 style="color: white">Книги</h4>
+                </a>
+            </div>
+            <h2 style="color: white; margin-left: -350px">📚 Книги 📚</h2>
+            <form th:action="@{/logout}" method="post">
+                <button class="btn btn-dark" style="margin-left: 10px" th:text="${user}" type="submit"></button>
+            </form>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row justify-content-start ">
+            <div class="col-8 border bg-light px-4">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Адрес</th>
+                        <th scope="col">Сайт</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="var : ${publishes}">
+                        <td th:text="${var.getId()}"></td>
+                        <td th:text="${var.getName_publish()}"></td>
+                        <td th:text="${var.getAddress()}"></td>
+                        <td th:text="${var.getSite()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 border px-4">
+                <form method="POST" th:action="@{/Publish/save_update}" th:object="${publish}">
+                    <div class="mb-3">
+                        <br> <label class="col-sm-3 col-12" style="font-size: 30px">Изменение</label>
+                        <div class="col-sm-6" style="width: auto">
+
+                            <label for="id" class="col-sm-3 col-form-label">ID</label>
+                            <input type="text" readonly name="id" class="form-control" id="id" th:field="*{id}"/>
+
+                            <label for="name_publish" class="col-sm-3 col-form-label">Название</label>
+                            <input type="text" name="name_publish" class="form-control" id="name_publish" th:field="*{name_publish}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('name_publish')}" th:errors="*{name_publish}"></div>
+
+                            <label for="address" class="col-sm-3 col-form-label">Адрес</label>
+                            <input type="text" name="address" class="form-control" id="address" th:field="*{address}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+
+                            <label for="site" class="col-sm-3 col-form-label">Адрес</label>
+                            <input type="text" name="site" class="form-control" id="site" th:field="*{site}"/>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('site')}" th:errors="*{site}"></div>
+
+                        </div>
+                    </div>
+                    <p><br><button type="submit" class="btn btn-dark border-0">Изменить</button>
+                        <a href="/Publish"><button type="button" class="btn btn-dark border-0">Отмена</button></a>
+                        <br></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div id="footer" class="fixed-bottom">
+	<div class="container text-center">
+	<p class="text-muted credit">РГЭУ(РИНХ)2024 Савина А.С. ПИ-331</p>
+	</div>
+</div>
+</html>

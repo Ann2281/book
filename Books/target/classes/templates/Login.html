@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style/style.css}">
+    <title>Вход</title>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background: #05b487">
+    <div class="container-fluid" style="justify-content: center">
+            <a class="navbar-brand btngreen" style="padding: 5px; margin-right: auto; border-radius: 25px" href="/">
+                <img th:src="@{/images/logo.png}" style="margin: auto" alt="" width="80" height="80"/>
+                <h4 style="color: white">Главная</h4>
+            </a>
+        <h2 style="color: white;">📚 Книги 📚</h2>
+    </div>
+</nav>
+
+<form method="POST" th:action="@{/Login}" id="loginFrom">
+    <div class="mb-3" th:align="CENTER">
+        <br>
+        <h3>Авторизация</h3>
+        <div class="col-sm-6" style="background: #05b487; padding: 25px; border-radius: 25px">
+
+            <label for="username" class="col-sm-3 col-form-label text-white">Имя пользователя: </label>
+            <input type="text" class="form-control" name="username" id="username"/><br/>
+
+            <label for="password" class="col-sm-3 col-form-label text-white">Пароль: </label>
+            <input type="password" class="form-control" name="password" id="password"/><br/>
+
+            <p>
+                <br>
+                <button type="submit" class="btn btn-dark" style="background: #b40532; border: 0;font-size: 20px; width: auto">Войти
+                </button>
+                <br>
+            </p>
+            <div th:if="${param.error}" class="text-white">Проверьте имя пользователя и пароль!</div>
+            <br>
+            <a th:href="@{/Registration}" class="text-white">Нет аккаунта?</a>
+        </div>
+    </div>
+</form>
+</body>
+<div id="footer" class="fixed-bottom">
+	<div class="container text-center">
+	<p class="text-muted credit">РГЭУ(РИНХ)2024 Савина А.С. ПИ-331</p>
+	</div>
+</div>
+</html>

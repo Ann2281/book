@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style/style.css}">
+    <title>Главная страница</title>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-light" style="background: #05b487">
+        <div class="container-fluid">
+            <div class="d-inline-flex">
+                <a class="navbar-brand" style="background: #b40532; padding: 5px; border-radius: 25px" href="/">
+                    <img th:src="@{/images/logo.png}" style="margin: auto" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Главная</h4>
+                </a>
+                <a class="navbar-brand btngreen" style="padding: 5px; border-radius: 25px" href="/Author">
+                    <img th:src="@{/images/author.png}" style="margin: auto" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Авторы</h4>
+                </a>
+                <a class="btn btngreen" style="padding: 5px; border-radius: 25px"  href="/Publish">
+                    <img th:src="@{/images/publish.png}" style="margin: auto;" alt="" width="80" height="80"/>
+                    <h4 style="color: white">Издательства</h4>
+                </a>
+                <a class="btn btngreen" style="padding: 5px; margin-left: 10px; border-radius: 25px"  href="/Book">
+                    <img th:src="@{/images/book.png}" style="margin: auto; " alt="" width="80" height="80"/>
+                    <h4 style="color: white">Книги</h4>
+                </a>
+            </div>
+            <h2 style="color: white; margin-left: -350px">📚 Книги 📚</h2>
+            <form th:action="@{/logout}" method="post">
+                <button class="btn btn-dark" style="margin-left: 10px" th:text="${user}" type="submit"></button>
+            </form>
+        </div>
+    </nav>
+</div>
+<div class="align-items-center p-3">
+    <h2 class="text-center">Добро пожаловать</h2>
+    <h3 class="text-center">Данная система реализует ведение информации о книгах, авторах и издательствах.
+        <br>
+        Доступ к каждой таблице можно получить через навигационное меню в верхней части страницы.
+        <br>
+        В левой части навигационного меню можно войти в аккаунт или выйти из него.
+    </h3>
+    <h3 class="text-center">Для доступа к данным, необходимо войти в свой аккаунт
+        <br>
+        Если у вас нет аккаунта, его можно создать, перейдя по соотвествующей ссылке на странице входа
+    </h3>
+</div>
+</body>
+<div id="footer" class="fixed-bottom">
+	<div class="container text-center">
+	<p class="text-muted credit">РГЭУ(РИНХ)2024 Савина А.С. ПИ-331</p>
+	</div>
+</div>
+</html>
